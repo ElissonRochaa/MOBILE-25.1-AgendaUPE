@@ -13,8 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
     home: Scaffold(
        appBar: AppBar(
+       centerTitle: true,
+       toolbarHeight: 50,
        backgroundColor: Colors.grey,
-       title: const Text('Calendario UPE')
+       title: Image.asset('assets/images/logo.png', width: 100, height: 100,),
+        leading: IconButton(onPressed: () => {}, icon: Icon(Icons.exit_to_app)),
+        actions: [ IconButton(onPressed: () => {}, icon: Icon(Icons.dark_mode)),],
+       
       ),
        body: CalendarScreeen(),
        backgroundColor: Colors.white,
@@ -22,11 +27,9 @@ class MyApp extends StatelessWidget {
     
     )
 
-
-     
-
-
-
     );
   }
+
+
+  
 }

@@ -72,15 +72,15 @@ int getHashCode(DateTime key){
   @override
   Widget build(BuildContext context) {
     return Padding(
-    padding : const EdgeInsets.all(20.0),
+    padding : const EdgeInsets.all(10.0),
     child: Column(
       children: [
         TableCalendar(
           eventLoader: _getEventsForDay,
           selectedDayPredicate: (day) => isSameDay(day, today),
-          focusedDay: DateTime.utc(2021, 12, 31), 
-          firstDay: DateTime.utc(2021, 1, 1), 
-          lastDay: DateTime.utc(2021, 12, 31),
+          focusedDay: DateTime.now(),
+          firstDay: DateTime.utc(2025, 1, 1), 
+          lastDay: DateTime.utc(2025, 12, 31),
           onDaySelected: _onDaySelected,
           headerStyle: HeaderStyle(
             formatButtonVisible: false,
@@ -90,18 +90,34 @@ int getHashCode(DateTime key){
           ),
           ),
 
+
+Center(
+  child: Container(
+    margin: const EdgeInsets.all(20.0),
+    width: 20.0,
+    height: 60.0,
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(10.0),
+    color: Colors.black,
+  ),
+    
+  ),
+),
+
+
+
          Text(today.toString().split(" ")[0],
          style: const TextStyle(
                           color: Color.fromARGB(255, 0, 0, 0),
-                          fontSize: 100.0,),
-          textAlign: TextAlign.right,
+                          fontSize: 50.0,),
+          textAlign: TextAlign.center,
 
          ),
 
-          const SizedBox(height: 0.1),
+          const SizedBox(height: 10),
           Expanded(
             child: GridView.count(
-              crossAxisCount: 5,
+              crossAxisCount: 1,
               children: [
                 ..._getEventsForDay(today).map((event) => Card(
                     color: Colors.blueGrey,
@@ -113,7 +129,7 @@ int getHashCode(DateTime key){
                         event.title.toString(),
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 15.0,
+                          fontSize: 20.0,
                         ),
                         textAlign: TextAlign.center,
                       ),
