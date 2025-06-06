@@ -92,7 +92,10 @@ int getHashCode(DateTime key){
 
 
 Center(
-  child: Container(
+  child: Wrap(
+   children: [
+    for(int z=0;z<10;z++)
+ Container(
     margin: const EdgeInsets.all(20.0),
     width: 20.0,
     height: 60.0,
@@ -100,8 +103,9 @@ Center(
     borderRadius: BorderRadius.circular(10.0),
     color: Colors.black,
   ),
-    
   ),
+   ],
+  )
 ),
 
 
