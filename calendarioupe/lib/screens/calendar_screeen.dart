@@ -4,6 +4,8 @@ import 'package:calendarioupe/models/event_model.dart';
 import 'package:calendarioupe/utils/faker_api.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:calendarioupe/components/my_decoration.dart';
+
 
 
 LinkedHashMap<DateTime, List<AppEvent>>? _groupedEvents;
@@ -91,22 +93,8 @@ int getHashCode(DateTime key){
           ),
 
 
-Center(
-  child: Wrap(
-   children: [
-    for(int z=0;z<10;z++)
- Container(
-    margin: const EdgeInsets.all(20.0),
-    width: 20.0,
-    height: 60.0,
-    decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(10.0),
-    color: Colors.black,
-  ),
-  ),
-   ],
-  )
-),
+         MyDecoration(),
+
 
 
 

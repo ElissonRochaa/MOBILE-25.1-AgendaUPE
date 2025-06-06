@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:calendarioupe/components/my_textfield.dart';
 import 'package:calendarioupe/components/my_button.dart';
+import 'package:calendarioupe/components/my_decoration.dart';
+
 
 
 class LoginScreen extends StatelessWidget {
@@ -20,22 +22,8 @@ class LoginScreen extends StatelessWidget {
        children: [
 
 
-Center(
-  child: Wrap(
-   children: [
-    for(int z=0;z<13;z++)
- Container(
-    margin: const EdgeInsets.all(20.0),
-    width: 20.0,
-    height: 60.0,
-    decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(10.0),
-    color: Colors.black,
-  ),
-  ),
-   ],
-  )
-),
+MyDecoration(),
+
 
 
               const SizedBox(height: 125),
