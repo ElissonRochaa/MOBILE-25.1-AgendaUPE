@@ -7,29 +7,38 @@ import 'package:calendarioupe/components/my_decoration.dart';
 
 
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   final Function()? onTap;
-  LoginScreen({super.key, required this.onTap});
+  RegisterScreen({super.key, required this.onTap});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   // text editing controllers
   final usernameController = TextEditingController();
 
   final passwordController = TextEditingController();
 
+  final confirmPasswordController = TextEditingController();
+
+
   // sign user in method
-  void signUserIn() async {
+  void signUserUp() async {
 
 
 
      try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: usernameController.text, 
-      password: passwordController.text);
+     if (passwordController.text == confirmPasswordController.text) {
+       await FirebaseAuth.instance.createUserWithEmailAndPassword(
+       email: usernameController.text, 
+       password: passwordController.text);
+     } else {
+      showErrorMessage("Senhas não iguais");
+     }
+
+
      } on FirebaseAuthException catch (e) {
       showErrorMessage(e.code);
 
@@ -56,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
          children: [
        
        
-         Hero(tag: 'deco', child: MyDecoration()),
+        MyDecoration(),
        
        
        
@@ -77,20 +86,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                 ),
        
+       
+                const SizedBox(height: 25),
+       
+                MyTextField(
+                  controller: confirmPasswordController,
+                  hintText: 'Confirmar Senha',
+                  obscureText: true,
+                ),
+       
                 const SizedBox(height: 50),
        
        
        
        
                 MyButton(
-                  text: 'Logar',
-                  onTap: signUserIn,
+                  text: "Cadastrar",
+                  onTap: signUserUp,
                 ),
 
                  const SizedBox(height: 25),
-       
-       
 
+
+       
 
 
                 Row(
@@ -100,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   GestureDetector(
                     onTap: widget.onTap,
                     child: const Text(
-                      'Cadastrar',
+                      'Logar',
                       style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
@@ -109,6 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               )
+
 
 
 

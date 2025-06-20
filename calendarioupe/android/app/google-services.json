@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "474084026323",
+    "project_id": "calendupelogin",
+    "storage_bucket": "calendupelogin.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474084026323:android:5c882110028a64496a3126",
+        "android_client_info": {
+          "package_name": "com.example.calendarioupe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWDS7HaG6y1hO6BKc0Yj08ofcFykZrmJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
