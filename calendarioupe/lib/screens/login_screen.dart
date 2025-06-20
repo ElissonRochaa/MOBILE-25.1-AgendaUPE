@@ -7,6 +7,7 @@ import 'package:calendarioupe/components/my_decoration.dart';
 
 
 
+
 class LoginScreen extends StatefulWidget {
   final Function()? onTap;
   LoginScreen({super.key, required this.onTap});
@@ -20,6 +21,21 @@ class _LoginScreenState extends State<LoginScreen> {
   final usernameController = TextEditingController();
 
   final passwordController = TextEditingController();
+
+void passwordReset() async {
+  
+  try {
+   await FirebaseAuth.instance.sendPasswordResetEmail(
+    email :usernameController.text);
+      showDialog(context: context, builder: (context) {
+      return AlertDialog(title:Center (child: Text ('Um email foi eviado com sucesso!')));
+    } );
+    } on FirebaseAuthException catch (e) {
+      showErrorMessage(e.code);
+
+}
+}
+
 
   // sign user in method
   void signUserIn() async {
@@ -88,7 +104,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                  const SizedBox(height: 25),
-       
+                 
+                MyButton(
+                  text: 'Recuperar senha',
+                  onTap: passwordReset,
+                ),
+
+                 const SizedBox(height: 25),
        
 
 
